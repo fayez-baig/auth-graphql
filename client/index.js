@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { ApolloClient, ApolloProvider } from "@apollo/client";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 import App from "./components/App";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Dashboard from "./components/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const cache = new InMemoryCache();
 
@@ -27,10 +28,7 @@ const Root = () => {
       <HashRouter>
         <Switch>
           <Route exact path="/">
-            <App children={<div>Please Login</div>}></App>
-          </Route>
-          <Route exact path="/dashboard">
-            <App children={<Dashboard />}></App>
+            <App children={<div>Please Login or Signup</div>}></App>
           </Route>
           <Route exact path="/login">
             <App children={<LoginForm />}></App>
@@ -38,6 +36,7 @@ const Root = () => {
           <Route exact path="/signup">
             <App children={<SignupForm />}></App>
           </Route>
+          <ProtectedRoute />
         </Switch>
       </HashRouter>
     </ApolloProvider>
