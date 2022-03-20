@@ -6,10 +6,10 @@ import App from "./App";
 import Dashboard from "./Dashboard";
 
 const ProtectedRoute = () => {
-  const { data } = useQuery(FETCH_USER);
+  const { data, loading } = useQuery(FETCH_USER);
   return (
     <Switch>
-      {data?.user ? (
+      {!loading && data?.user ? (
         <Route exact path="/dashboard">
           <App children={<Dashboard />}></App>
         </Route>
