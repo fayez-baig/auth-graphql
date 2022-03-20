@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { ApolloClient, ApolloProvider } from "@apollo/client";
-import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import App from "./components/App";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
